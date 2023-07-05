@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Poppins:wght@200;300;400;600&display=swap');
+* {
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background-color: hsl(0, 0%, 98%);
+}
+/* 標題區給它固定寬後margin:auto 區塊跟文字置中*/
+header {
+  color: hsl(229, 6%, 30%);
+  max-width: 500px;
+  margin: 50px auto;
+  text-align: center;
+}
+h1 {
+  font-weight: 200;
+  margin: 0;
+}
+/*important!!一個網頁只能有一個h1
+h1裡面包span,span會繼承h1樣式
+*/
+h1 span {
+  font-weight: 600;
+}
+p {
+  color: hsl(229, 6%, 66%);
+}
+/* 利用flex特性 將寬度設定成1140px 使box按照三個一列的排列
+多出來的往下擠而且會到中間
+*/
+.container {
+  max-width: 1140px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+/* 容器裡的四個box設定 */
+.box {
+  background-color: #fff;
+  position: relative;
+  width: 350px;
+  padding: 30px;
+  margin: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 6px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+/* 用偽作元素做邊框 */
+.box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 100%;
+}
+/* 各別為box設定樣式 注意選擇器的寫法*/
+.box-red::after {
+  background-color: hsl(0, 78%, 62%);
+}
+.box-cyan::after {
+  background-color: hsl(180, 62%, 55%);
+}
+.box-orange::after {
+  background-color: hsl(34, 97%, 64%);
+}
+.box-blue::after {
+  background-color: hsl(212, 86%, 64%);
+}
+
+/* 新增一個把box往下移動的樣式 再把樣式添加到左右的box 讓他們往下移動XD*/
+.box-push {
+  transform: translateY(50%);
+}
+.box h2 {
+  color: hsl(229, 6%, 40%);
+}
+.box p {
+  font-size: 14px;
+  margin: 15px 0;
+}
+/* img 是行內元素 所以設定display:block因為margin對區塊元素才會生效
+margin-left:auto是把左邊剩餘空間填滿
+*/
+.box img {
+  display: block;
+  margin-left: auto;
+}
+@media (max-width: 775px) {
+  .box-push {
+    transform: translateY(0);
+  }
+}
